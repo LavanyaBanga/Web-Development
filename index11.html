@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Animation Example</title>
+    <style>
+        .container {
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+       .id2 {
+  width: 100px;
+  height: 50px;
+  background-color: blue;
+  margin: 20px;
+  z-index: 1;
+  box-shadow: 10px 15px 20px 20px rgba(78, 158, 211, 0.7);
+  position: relative; /* ✅ required for animation to work */
+  animation-name: movement;
+  animation-duration: 2s;
+  animation-iteration-count: 6;
+  animation-delay: 3s;
+  animation-timing-function: ease-in;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+
+        @keyframes movement {
+            from {
+                left: 0px;
+                top: 0px;
+            }
+            to {
+                left: 100px;
+                top: 0px;
+            }
+        }
+
+       .id1 {
+  width: 100px;
+  height: 50px;
+  background-color: blue;
+  margin: 20px;
+  z-index: 1;
+  box-shadow: 10px 15px 20px 20px rgba(78, 158, 211, 0.7);
+  position: relative; 
+  animation-name: movement;
+  animation-duration: 2s;
+  animation-iteration-count: 6;
+  animation-delay: 3s;
+  animation-timing-function: ease-in;
+  animation-direction:reverse ;
+  animation-fill-mode: backwards;
+}
+
+
+        @keyframes movement {
+            from {
+                left: 0px;
+                top: 0px;
+            }
+            to {
+                right: 100px;
+                top: 0px;
+            }
+        }
+
+        h2 {
+            color: #6a0572;
+            margin-top: 40px;
+        }
+
+        p {
+            padding: 10px 30px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="id2" src="https://tse1.mm.bing.net/th?id=OIP.IhGijgoVTEs0_4rPuUXboQHaE8&pid=Api&P=0&h=180" alt="">
+        <img class="id1" src="https://tse1.mm.bing.net/th?id=OIP.IhGijgoVTEs0_4rPuUXboQHaE8&pid=Api&P=0&h=180" alt="">
+        <h2>This is Lavanya</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam explicabo asperiores non libero...</p>
+    </div>
+</body>
+</html>
