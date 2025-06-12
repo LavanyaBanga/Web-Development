@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lavanya's Dark Lavender Gallery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000000;
+    color: #cbb7e6; /* soft lavender */
+    margin: 0;
+    padding: 20px 15px 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Animated header text with moving highlight */
+  @keyframes highlightMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+ 
+   header {
+  background-color: #0f0f0f; /* blackish background */
+  color: #d8b4fe; /* subtle lavender/purple text */
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 2.8em;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 0 0 10px rgba(216, 180, 254, 0.6); /* soft purple glow */
+  border-bottom: 3px solid rgba(216, 180, 254, 0.4); /* subtle border */
+}
+
+  nav {
+    width: 100%;
+    max-width: 960px;
+    margin: 35px 0 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: #cbb7e6;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    background: rgba(177, 156, 217, 0.15);
+    box-shadow: 0 0 6px #b19cd9aa;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background: #b19cd9;
+    color: #1a0030;
+    box-shadow: 0 0 14px 4px #b19cd9cc;
+    outline: none;
+    transform: scale(1.08);
+  }
+
+  section {
+    width: 100%;
+    max-width: 960px;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 10px;
+  }
+
+  section h2 {
+    color: #b19cd9;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1.2px;
+  }
+
+  #art div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+  }
+
+  #art img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 12px 3px #b19cd9bb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 0 7px #c7b3e6aa);
+  }
+
+  #art img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 24px 5px #d7cdf7cc;
+    filter: drop-shadow(0 0 15px #e0d7ff);
+  }
+
+  #music audio {
+    width: 320px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px 2px #c7b3e6bb;
+    outline: none;
+    margin-top: 10px;
+    background: #1a0a40;
+  }
+
+  .video-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .video-gallery iframe {
+    flex: 1 1 320px;
+    max-width: 320px;
+    height: 180px;
+    border-radius: 18px;
+    border: none;
+    box-shadow: 0 0 15px 2px #b19cd9cc;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #1a0a40;
+  }
+
+  .video-gallery iframe:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 22px 4px #b19cd9cc;
+  }
+
+  #location iframe {
+    width: 420px;
+    height: 300px;
+    border-radius: 18px;
+    border: none;
+    box-shadow: 0 0 15px 3px #b19cd9bb;
+    transition: box-shadow 0.3s ease;
+    background: #1a0a40;
+  }
+
+  #location iframe:hover {
+    box-shadow: 0 0 25px 5px #b19cd9cc;
+  }
+
+  footer {
+    width: 100%;
+    max-width: 960px;
+    padding: 18px 15px;
+    text-align: center;
+    background: #1a0a40;
+    border-radius: 18px;
+    box-shadow: 0 0 18px 4px #6a4bb7cc;
+    color: #b19cd9;
+    letter-spacing: 1.1px;
+    user-select: none;
+  }
+
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 700px) {
+    nav {
+      gap: 18px;
+    }
+    #art div {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    #art img {
+      max-width: 90vw;
+      aspect-ratio: auto;
+    }
+    .video-gallery iframe {
+      flex-basis: 90vw;
+      max-width: none;
+      height: 200px;
+    }
+    #location iframe {
+      width: 90vw;
+      height: 250px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  Welcome to Lavanya's Dark Lavender Gallery
+</header>
+
+<nav>
+  <a href="#art">Art Gallery</a>
+  <a href="#music">Music</a>
+  <a href="#videos">YouTube Videos</a>
+  <a href="#location">Gallery Location</a>
+</nav>
+
+<section id="art">
+  <h2>Beautiful Purple Artworks</h2>
+  <div>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Purple Art 1" />
+    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?auto=format&fit=crop&w=400&q=80" alt="Purple Art 2" />
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Purple Art 3" />
+    <img src="https://agbrief.com/wp-content/uploads/2023/07/GALLERY-resized-cod_casino_area_0036.jpg" alt="Purple Art 4" />
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Purple Art 5" />
+    <img src="https://www.asgam.com/wp-content/uploads/2022/12/City-of-Dreams-Manila.webp" alt="Purple Art 6" />
+  </div>
+</section>
+
+<section id="music">
+  <h2>Listen to Soft Music</h2>
+  <audio controls src="Kahani-Suno-Instrumental.mp3" preload="none"></audio>
+</section>
+
+<section id="videos">
+  <h2>Enjoy Some YouTube Videos</h2>
+  <div class="video-gallery">
+    <iframe src="https://youtube.com/embed/6o3RtVcXyTk" title="YouTube video 1" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://youtube.com/embed/jbX1q8E9SdY" title="YouTube video 2" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://youtube.com/embed//0NhxaJ4dBQU" title="YouTube video 3" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://youtube.com/embed/6iVzHFFBAt0" title="YouTube video 4" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://youtube.com/embed/5He0fCy5f0w" title="YouTube video 5" allowfullscreen loading="lazy"></iframe>
+    <iframe src="https://youtube.com/embed/2XCnmQEp9lw" title="YouTube video 6" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<section id="location">
+  <h2>Find Us Here</h2>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.093637187598!2d77.68792647475538!3d27.492795682849243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3974cf2e8cc67e95%3A0x5dca9e02b2a6df55!2sGLA%20University!5e0!3m2!1sen!2sin!4v1689546878773!5m2!1sen!2sin" 
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer>
+  <p>© 2025 Lavanya Banga | All rights reserved</p>
+</footer>
+
+</body>
+</html> 
