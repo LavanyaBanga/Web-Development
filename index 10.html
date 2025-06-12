@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Flexbox Boxes</title>
+  <style>
+    .container {
+      background-color: white;
+      display: flex;              
+      flex-direction: row;        
+      flex-wrap: wrap-reverse;    
+      gap: 10px;                  
+      padding: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 50px;
+      border: 2px solid hotpink;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    
+    @media screen and (max-width: 800px) and (orientation: portrait) and (aspect-ratio: 3/2) and (pointer: coarse) and (hover: hover) {
+      .box {
+        background-color: lavender;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box" id="box1">Box 1</div>
+    <div class="box" id="box2">Box 2</div>
+    <div class="box" id="box3">Box 3</div>
+    <div class="box" id="box4">Box 4</div>
+  </div>
+
+</body>
+</html>
