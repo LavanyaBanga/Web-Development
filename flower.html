@@ -3,7 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>Lavanya's Flowers 🌷</title>
-  <link rel="stylesheet" href="style2.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #ffe0f0, #f5e1ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  font-size: 3rem;
+  color: #c94c89;
+  margin-bottom: 10px;
+}
+
+.container .tagline {
+  font-size: 1.2rem;
+  color: #5a3a57;
+  margin-bottom: 30px;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 260px;
+  height: 320px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+  </style>
 </head>
 <body>
 
