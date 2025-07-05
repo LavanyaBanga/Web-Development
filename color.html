@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle Generator</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      background-color: #f0f0f0;
+    }
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      position: absolute;
+    }
+    #buttons {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    }
+    button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="buttons">
+  <button id="undo">Undo</button>
+  <button id="redo">Redo</button>
+  <button id="reset">Reset</button>
+</div>
+
+<script>
+  let circles = [];
+  let redoStack = [];
+
+  document.addEventListener("click", function(e) {
+    if (e.target.tagName === "BUTTON") return;
+    //automatic js object for hovering
+    //button p aate hi function return taki no circle 
+
+    let circle = document.createElement("div");///creating a new element div
+    circle.className = "circle";//class name for applying css
+    circle.style.left = (e.clientX - 20) + "px";// here 20 is for centering the circle on the x axis
+    circle.style.top = (e.clientY - 20) + "px";//Same cheez Y-axis ke liye
+    circle.style.backgroundColor = getRandomColor();//for random color
+
+    document.body.appendChild(circle);//for appending the circle to body5
+    circles.push(circle);//circle vala stack 
+    redoStack = []; //redo stack abhi blank h
+  });
+
+  function getRandomColor() {
+    let letters = "0123456789ABCDEF"; //hexadecimal text for color
+    let color = "#";//for hexa starting value
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];//0 to 15 se random number ..random normally 0se 1 k beech deta h
+    }
+    return color;//color mil gya
+  }
+
+  document.getElementById("undo").addEventListener("click", function() {
+    if (circles.length > 0) {
+      let last = circles.pop();//pop krega
+      document.body.removeChild(last);//body s remove
+      redoStack.push(last);//push krga to redo stack
+    }
+  });
+
+  document.getElementById("redo").addEventListener("click", function() {
+    if (redoStack.length > 0) {
+      let circle = redoStack.pop();//redo s htaega
+      document.body.appendChild(circle);//body m append krega
+      circles.push(circle);//circle m jaiga
+    }
+  });
+
+  document.getElementById("reset").addEventListener("click", function() {
+    circles.forEach(c => document.body.removeChild(c));
+    circles = [];//blank
+    redoStack = [];//blank
+  });
+</script>
+
+</body>
+</html>

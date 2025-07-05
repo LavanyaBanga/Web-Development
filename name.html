@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clean Name Cards</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f8f8, #f0e7e9);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      width: 110px;
+      height: 110px;
+      border-radius: 14px;
+      background-color: var(--card-color, #f7f7f7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .letter {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .name {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      background-color: #d9534f;
+      border: none;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+    }
+
+    .card:hover .remove-btn {
+      display: block;
+    }
+
+    .input-area {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #newNameInput {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 220px;
+      outline: none;
+    }
+
+    #addBtn {
+      padding: 10px 16px;
+      font-size: 16px;
+      background-color: #5a189a;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #addBtn:hover {
+      background-color: #3c096c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cards-container" id="cardsContainer"></div>
+
+  <div class="input-area">
+    <input type="text" id="newNameInput" placeholder="Enter a name..." />
+    <button id="addBtn">Add</button>
+  </div>
+
+  <script>
+    const cardsContainer = document.getElementById("cardsContainer");
+    const newNameInput = document.getElementById("newNameInput");
+    const addBtn = document.getElementById("addBtn");
+
+    // Light pastel card colors
+    const pastelColors = [
+      "#fdebd0", "#d6eaf8", "#f9e79f", "#e8daef",
+      "#d5f5e3", "#f6ddcc", "#fce4ec", "#e3f2fd",
+      "#f5eef8", "#fdf2e9"
+    ];
+
+    addCard("Lavanya");
+
+    addBtn.addEventListener("click", () => {
+      const name = newNameInput.value.trim();
+      if (name !== "") {
+        addCard(name);
+        newNameInput.value = "";
+      }
+    });
+
+    function addCard(name) {
+      const letter = name.charAt(0).toUpperCase();
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.setProperty('--card-color', getRandomColor());
+
+      const letterEl = document.createElement("div");
+      letterEl.className = "letter";
+      letterEl.textContent = letter;
+
+      const nameEl = document.createElement("div");
+      nameEl.className = "name";
+      nameEl.textContent = name;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "remove-btn";
+      removeBtn.textContent = "❌";
+      removeBtn.addEventListener("click", () => {
+        cardsContainer.removeChild(card);
+      });
+
+      card.appendChild(removeBtn);
+      card.appendChild(letterEl);
+      card.appendChild(nameEl);
+      cardsContainer.appendChild(card);
+    }
+
+    function getRandomColor() {
+      return pastelColors[Math.floor(Math.random() * pastelColors.length)];
+    }
+  </script>
+
+</body>
+</html>
